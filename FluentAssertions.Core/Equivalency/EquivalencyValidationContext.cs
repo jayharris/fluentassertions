@@ -71,7 +71,11 @@ namespace FluentAssertions.Equivalency
         /// </summary>
         public bool IsRoot
         {
-            get { return (SelectedMemberDescription.Length == 0); }
+            get
+            {
+                // SMELL: That prefix should be obtained from some kind of constant
+                return (SelectedMemberDescription.Length == 0) || SelectedMemberDescription.StartsWith("item[");
+            }
         }
 
         /// <summary>
